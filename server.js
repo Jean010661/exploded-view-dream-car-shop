@@ -74,6 +74,8 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
     console.error('Webhook signature check failed:', err.message);
     return res.status(400).send('Bad signature');
   }
+  // Answer Stripe immediately; the email work below runs after the response is sent.
+  res.json({ received: true });
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
     try {
@@ -105,7 +107,6 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
       console.error('Order webhook processing failed:', err.message);
     }
   }
-  res.json({ received: true });
 });
 // --- End webhook --------------------------------------------------------
 
