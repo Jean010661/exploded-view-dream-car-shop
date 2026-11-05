@@ -101,8 +101,8 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
             'User-Agent': 'exploded-view-shop/1.0',
           },
           body: JSON.stringify({
-            from: 'onboarding@resend.dev',
-            to: 'jvitalbc@gmail.com',
+            from: 'orders@shop.unitedaigroup.com',
+            to: 'jeanv@unitedaigroup.com',
             subject: `New t-shirt shop order — $${(full.amount_total / 100).toFixed(2)}`,
             text: body,
           }),
@@ -113,7 +113,7 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
         }
         let resendId = '';
         try { resendId = JSON.parse(respText).id; } catch (e) { /* ignore */ }
-        console.log('Order email sent to jvitalbc@gmail.com for session', session.id, resendId);
+        console.log('Order email sent to jeanv@unitedaigroup.com for session', session.id, resendId);
       } else {
         // Fallback for local use: Gmail SMTP via nodemailer
         const transport = mailer();
@@ -172,15 +172,15 @@ app.post('/api/request-design', async (req, res) => {
           'User-Agent': 'exploded-view-shop/1.0',
         },
         body: JSON.stringify({
-          from: 'onboarding@resend.dev',
-          to: 'jvitalbc@gmail.com',
+          from: 'orders@shop.unitedaigroup.com',
+          to: 'jeanv@unitedaigroup.com',
           subject: 'New car design request - ' + year + ' ' + make + ' ' + model,
           text,
         }),
       });
       const respText = await resp.text();
       if (!resp.ok) throw new Error('Resend email failed: ' + resp.status + ' ' + respText);
-      console.log('Design request email sent to jvitalbc@gmail.com for ' + year + ' ' + make + ' ' + model);
+      console.log('Design request email sent to jeanv@unitedaigroup.com for ' + year + ' ' + make + ' ' + model);
     } else {
       console.log('RESEND_API_KEY not set - design request logged but not emailed: ' + year + ' ' + make + ' ' + model + ' ' + email);
     }
