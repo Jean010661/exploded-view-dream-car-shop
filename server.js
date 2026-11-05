@@ -138,6 +138,59 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
 
 app.use(express.json({limit:'15kb'}));
 app.use(express.static(path.join(__dirname,'public')));
+
+// --- Custom design request (not an order) -------------------------------
+app.post('/api/request-design', async (req, res) => {
+  try {
+    const b = req.body || {};
+    // Honeypot: real visitors never fill this in. Quietly pretend success.
+    if (typeof b.website === 'string' && b.website.trim() !== '') return res.json({ ok: true });
+    const str = (v) => (typeof v === 'string' ? v.trim() : '');
+    const year = str(b.year), make = str(b.make), model = str(b.model);
+    const format = str(b.format), name = str(b.name), email = str(b.email);
+    if (!/^\d{4}$/.test(year) || Number(year) < 1900 || Number(year) > 2030) return res.status(400).json({ error: 'Year must be 4 digits between 1900 and 2030.' });
+    if (!make || make.length > 100) return res.status(400).json({ error: 'Make is required.' });
+    if (!model || model.length > 100) return res.status(400).json({ error: 'Model is required.' });
+    if (format !== 'shirt' && format !== 'poster') return res.status(400).json({ error: 'Format must be shirt or poster.' });
+    if (!name || name.length > 100) return res.status(400).json({ error: 'Name is required.' });
+    if (email.length > 200 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ error: 'A valid email address is required.' });
+    const formatLabel = format === 'shirt' ? 'T-Shirt $29.99' : '8x10 Poster $19.99';
+    if (process.env.RESEND_API_KEY) {
+      const text =
+        `Year: ${year}\n` +
+        `Make: ${make}\n` +
+        `Model: ${model}\n` +
+        `Format: ${formatLabel}\n` +
+        `Customer name: ${name}\n` +
+        `Customer email: ${email}\n\n` +
+        `This is a custom design request, not an order. Reply to the customer with the cost once the design is ready.\n`;
+      const resp = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + process.env.RESEND_API_KEY,
+          'Content-Type': 'application/json',
+          'User-Agent': 'exploded-view-shop/1.0',
+        },
+        body: JSON.stringify({
+          from: 'onboarding@resend.dev',
+          to: 'jvitalbc@gmail.com',
+          subject: 'New car design request - ' + year + ' ' + make + ' ' + model,
+          text,
+        }),
+      });
+      const respText = await resp.text();
+      if (!resp.ok) throw new Error('Resend email failed: ' + resp.status + ' ' + respText);
+      console.log('Design request email sent to jvitalbc@gmail.com for ' + year + ' ' + make + ' ' + model);
+    } else {
+      console.log('RESEND_API_KEY not set - design request logged but not emailed: ' + year + ' ' + make + ' ' + model + ' ' + email);
+    }
+    res.json({ ok: true });
+  } catch (err) {
+    console.error('Design request failed:', err.message);
+    res.status(500).json({ error: 'Could not send the request.' });
+  }
+});
+// --- End design request -------------------------------------------------
 app.post('/api/checkout', async (req,res) => {
   try {
     if(!process.env.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY.includes('REPLACE')) {
