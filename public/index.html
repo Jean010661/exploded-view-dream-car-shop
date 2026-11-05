@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Exploded View Dream Car Vehicle Shop | Technical Diagram Apparel & Prints</title>
+<meta name="description" content="Shop exploded-view vehicle technical diagrams on premium t-shirts and 8x10 matte posters. All products are printed on demand." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg0:#05080f; --panel:#0c1425; --panel2:#101a30;
+  --line:#1d2a4d; --cyan:#00e5ff; --blue:#3b82f6;
+  --txt:#dce7f7; --muted:#8ea2c2;
+  --display:'Orbitron','Segoe UI',system-ui,sans-serif;
+  --bodyf:'Rajdhani','Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--bodyf);color:var(--txt);font-size:17px;
+  background:
+    radial-gradient(1100px 550px at 50% -8%, rgba(0,229,255,.10), transparent 60%),
+    radial-gradient(900px 500px at 85% 110%, rgba(59,130,246,.08), transparent 60%),
+    linear-gradient(rgba(0,229,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,.035) 1px, transparent 1px),
+    var(--bg0);
+  background-size:auto,auto,46px 46px,46px 46px,auto;}
+button,select{font:inherit}
+button{cursor:pointer}
+header{background:rgba(5,8,15,.94);border-bottom:1px solid #14213d;padding:18px max(20px,calc((100vw - 1280px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:6;box-shadow:0 4px 24px rgba(0,229,255,.07)}
+.logo{font-family:var(--display);font-size:clamp(15px,2vw,21px);font-weight:800;letter-spacing:1px;color:#fff}
+.logo b{color:var(--cyan);text-shadow:0 0 14px rgba(0,229,255,.8)}
+.logo span{color:#9db4d8}
+.cart-open{background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.5);border-radius:9px;padding:11px 15px;color:var(--cyan);font-weight:700;letter-spacing:.5px;transition:.2s}
+.cart-open:hover{background:rgba(0,229,255,.14);box-shadow:0 0 18px rgba(0,229,255,.35)}
+main{max-width:1320px;margin:auto;padding:0 20px}
+.hero{padding:60px 10px 40px;text-align:center}
+.eyebrow{font-family:var(--display);color:var(--cyan);text-transform:uppercase;letter-spacing:4px;font-weight:600;font-size:12px;text-shadow:0 0 12px rgba(0,229,255,.6)}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.5vw,52px);line-height:1.14;letter-spacing:1px;margin:16px auto;max-width:820px;color:#fff;background:linear-gradient(180deg,#ffffff 30%,#8fd8ff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--muted);max-width:680px;line-height:1.65;margin:0 auto;font-size:18px;font-weight:500}
+.trust{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.trust span{background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.3);border-radius:40px;padding:9px 15px;font-size:14px;font-weight:600;color:#bfe9ff;letter-spacing:.4px}
+.howto{max-width:860px;margin:20px auto 0;background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.35);border-radius:12px;padding:14px 20px;color:var(--txt);font-size:17px;line-height:1.6;box-shadow:inset 0 0 24px rgba(0,229,255,.06)}
+.howto strong{color:var(--cyan)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:36px 0 18px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.section-head h2{margin:0;font-family:var(--display);font-size:21px;letter-spacing:2px;color:#fff;text-transform:uppercase;font-weight:700}
+.section-head h2::before{content:"";display:inline-block;width:8px;height:20px;background:var(--cyan);margin-right:12px;vertical-align:-2px;box-shadow:0 0 10px var(--cyan)}
+.section-head small{color:var(--muted);letter-spacing:.5px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;padding-bottom:55px}
+.product{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:16px;overflow:hidden;min-width:0;transition:transform .2s,border-color .2s,box-shadow .2s}
+.product:hover{transform:translateY(-3px);border-color:rgba(0,229,255,.55);box-shadow:0 12px 34px rgba(0,229,255,.14)}
+.photo{height:auto;display:block;background:linear-gradient(180deg,#f2f6fb,#dbe4ef);border-bottom:1px solid var(--line);padding:10px}
+.photo img{width:100%;height:100%;object-fit:contain;display:block}
+.photo img.mainphoto{height:255px}
+.thumbs{display:flex;gap:8px;justify-content:center;padding:10px 4px 4px;flex-wrap:wrap;background:#0a1120;margin:10px -10px -10px;border-top:1px solid var(--line)}
+.thumb{border:2px solid #22345c;border-radius:8px;padding:0;background:#0a1120;width:66px;height:50px;overflow:hidden;transition:.15s}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb.active{border-color:var(--cyan);box-shadow:0 0 12px rgba(0,229,255,.5)}
+.content{padding:19px}
+.product h3{font-family:var(--display);font-size:15px;line-height:1.5;min-height:46px;margin:0 0 13px;letter-spacing:.6px;color:#fff;font-weight:600}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.option{min-width:0;padding:12px 10px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.02)}
+.option-title{font-size:14px;font-weight:700;color:#cfe0f7;letter-spacing:.5px}
+.price{font-family:var(--display);font-size:20px;letter-spacing:.5px;font-weight:700;margin:6px 0 8px;color:var(--cyan);text-shadow:0 0 12px rgba(0,229,255,.4)}
+.detail{color:var(--muted);font-size:13px;min-height:34px;line-height:1.4}
+.option select{border:1px solid #2a3c66;width:100%;height:34px;background:#0a1120;color:var(--txt);border-radius:6px;margin:8px 0;padding-left:8px}
+.option .spacer{height:52px}
+.add{width:100%;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#03131c;border:0;border-radius:8px;padding:11px 4px;font-weight:800;font-size:13px;letter-spacing:1px;box-shadow:0 4px 18px rgba(0,229,255,.35);transition:.15s}
+.add:hover{filter:brightness(1.12);box-shadow:0 6px 26px rgba(0,229,255,.55)}
+.note{background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.35);border-left:4px solid var(--cyan);border-radius:12px;padding:17px 22px;line-height:1.6;margin-bottom:40px;color:#b9cdf0;font-size:16px}
+.note strong{color:#fff}
+footer{background:#03060c;border-top:1px solid #14213d;color:#7d92b5;text-align:center;padding:28px 15px;font-size:14px;line-height:1.9;letter-spacing:.4px}
+footer strong{font-family:var(--display);color:#d5e6ff;letter-spacing:1.5px;font-size:13px}
+.shade{position:fixed;inset:0;background:#000a;z-index:4;display:none}
+.shade.visible{display:block}
+.drawer{position:fixed;right:0;top:0;bottom:0;width:min(440px,100vw);background:#0b1222;z-index:5;transform:translateX(101%);transition:transform .22s;display:flex;flex-direction:column;box-shadow:-10px 0 40px #000a;border-left:1px solid var(--line)}
+.drawer.visible{transform:translateX(0)}
+.drawerhead{padding:19px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.drawerhead h2{margin:0;font-family:var(--display);letter-spacing:2px;font-size:18px;color:#fff}
+.close{border:1px solid var(--line);background:#111b30;color:var(--txt);border-radius:8px;padding:8px 12px}
+.cartitems{overflow:auto;flex:1;padding:10px 20px}
+.cartline{display:flex;gap:10px;padding:17px 0;border-bottom:1px solid var(--line)}
+.cartline img{width:90px;height:70px;object-fit:contain;background:#eef2f7;border-radius:6px}
+.cartline strong{font-size:14px;color:#fff}
+.cartline small{color:var(--muted);display:block;margin:4px 0;font-size:13px}
+.cartline button{border:0;background:none;text-decoration:underline;color:#ff8484;font-size:12px;padding:0}
+.cartbottom{border-top:1px solid var(--line);padding:20px}
+.subtotal{display:flex;justify-content:space-between;font-size:20px;font-weight:700;margin-bottom:6px;color:#fff;font-family:var(--display);letter-spacing:1px}
+.cartbottom p{font-size:13px;color:var(--muted);line-height:1.5}
+.checkout{width:100%;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#03131c;border:none;border-radius:9px;padding:15px;font-weight:800;letter-spacing:1px;box-shadow:0 4px 18px rgba(0,229,255,.35)}
+.checkout:hover{filter:brightness(1.1)}
+.checkout:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
+.message{padding:12px;border-radius:8px;font-size:14px;line-height:1.5;margin-bottom:12px;background:#2a2111;color:#ffd9a0;border:1px solid #5a451f}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#062b33;color:var(--cyan);border:1px solid rgba(0,229,255,.5);padding:12px 22px;border-radius:30px;box-shadow:0 5px 24px rgba(0,229,255,.25);display:none;z-index:10;font-weight:600;letter-spacing:.5px}
+.toast.visible{display:block}
+.lightbox{position:fixed;inset:0;background:rgba(3,6,12,.94);z-index:20;display:none;align-items:center;justify-content:center;padding:24px}
+.lightbox.visible{display:flex}
+.lightbox img{max-width:min(1100px,94vw);max-height:90vh;object-fit:contain;background:#fff;border-radius:10px;box-shadow:0 0 60px rgba(0,229,255,.25)}
+.lb-close{position:absolute;top:16px;right:20px;border:1px solid rgba(0,229,255,.5);background:rgba(0,229,255,.08);color:var(--cyan);font-size:20px;border-radius:10px;padding:9px 15px}
+.lb-close:hover{background:rgba(0,229,255,.2)}
+.videogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:14px}
+.videogrid figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:.2s}
+.videogrid figure:hover{border-color:rgba(0,229,255,.5);box-shadow:0 8px 28px rgba(0,229,255,.12)}
+.videogrid video{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;background:#000}
+.videogrid figcaption{padding:10px 14px;font-size:15px;color:#b9cdf0;letter-spacing:.4px;font-weight:600}
+@media(max-width:1020px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){header{padding:16px}.hero{padding:40px 0}.grid{grid-template-columns:1fr;gap:16px}.photo img.mainphoto{height:260px}.product h3{min-height:0}.section-head h2{font-size:17px}.trust span{font-size:12px}.options{gap:8px}}
+@media(min-width:640px) and (max-width:800px){.options{grid-template-columns:1fr}.photo img.mainphoto{height:210px}}
+</style>
+</head>
+<body>
+<header><div class="logo">EXPLODED <b>VIEW</b> <span style="font-weight:450">Dream Car Vehicle Shop</span></div><button class="cart-open" onclick="openCart()">🛒 Cart <span id="count">(0)</span></button></header>
+<main><section class="hero"><div class="eyebrow">Engineering meets art</div><h1>Every part has a story.<br>Wear it. Frame it.</h1><p>Discover detailed exploded-view technical diagrams of legendary motorcycles, cars, trucks, SUVs, and yachts. Choose a t-shirt or an 8×10 matte poster featuring your favorite machine.</p><div class="trust"><span>✓ 9 technical diagram designs</span><span>✓ Printed on demand</span><span>✓ US shipping</span><span>✓ Sizes S–XL</span></div><div class="howto"><strong>How to order:</strong> 1. Find a design you like and press <strong>Add T-Shirt</strong> or <strong>Add Poster</strong> for each item you want. 2. When you are finished, open the <strong>Cart</strong> at the top of the page and press <strong>Checkout</strong> to pay.</div></section>
+<section aria-label="See it in real life"><div class="section-head"><h2>See it in real life</h2><small>Shirts on models &middot; Posters on the wall</small></div><div class="videogrid"><figure><video src="videos/model-male-ducati.mp4" autoplay muted loop playsinline preload="metadata"></video><figcaption>The Ducati tee, worn</figcaption></figure><figure><video src="videos/model-female-harley.mp4" autoplay muted loop playsinline preload="metadata"></video><figcaption>The Harley tee, worn</figcaption></figure><figure><video src="videos/poster-garage-motorcycle.mp4" autoplay muted loop playsinline preload="metadata"></video><figcaption>The poster on a garage wall</figcaption></figure><figure><video src="videos/poster-home-wall.mp4" autoplay muted loop playsinline preload="metadata"></video><figcaption>The poster in a living room</figcaption></figure><figure><video src="videos/model-female-corvette.mp4" autoplay muted loop playsinline preload="metadata"></video><figcaption>The Corvette tee, worn</figcaption></figure></div></section>
+<section aria-label="Products"><div class="section-head"><h2>Shop the collection</h2><small>9 designs · 2 formats each</small></div><div class="grid" id="grid"></div></section>
+<div class="note"><strong>Made for your order.</strong> All t-shirts and posters are printed on demand after ordering; no pre-printed inventory is kept. Please allow <strong>4 to 8 business days</strong> for printing and shipping. T-shirts are available in sizes <strong>S, M, L, and XL</strong>. Posters are <strong>8×10 inches, unframed, matte prints</strong>. US shipping addresses only.</div></main>
+<footer><strong>Exploded View Dream Car Vehicle Shop</strong><div>Technical details. Timeless designs.</div><div>© <span id="year"></span> Exploded View Dream Car Vehicle Shop · All products printed on demand.</div></footer>
+<div class="shade" id="shade" onclick="closeCart()"></div><aside class="drawer" id="drawer" aria-label="Shopping cart"><div class="drawerhead"><h2>Your cart</h2><button class="close" onclick="closeCart()">Close ✕</button></div><div class="cartitems" id="cartitems"></div><div class="cartbottom"><div class="subtotal"><span>Subtotal</span><span id="subtotal">$0.00</span></div><p>Secure card checkout collects your US shipping address. Printing and shipping take 4–8 business days. Any applicable tax and shipping fees are shown at checkout when configured.</p><div class="message" id="cartmsg" style="display:none"></div><button class="checkout" id="checkout" onclick="checkout()">Secure checkout</button></div></aside><div class="toast" id="toast"></div><div class="lightbox" id="lightbox" onclick="closeLightbox()"><button type="button" class="lb-close" aria-label="Close enlarged photo">✕</button><img id="lightbox-img" src="" alt="Enlarged product photo"></div>
+<script>
+const names=['Ducati Panigale V4 Exploded','Harley-Davidson Street Glide Exploded','Ford F-150 Exploded','Yangwang U8L Luxury SUV Exploded','BMW 330i Exploded','Maserati GranTurismo Exploded','Lamborghini Temerario Exploded','Corvette Stingray Exploded','Luxury Yacht Exploded'];
+const images=names.map((_,i)=>`images/${74117+i}.png`);const slugs=['ducati','harley','f150','yangwang','bmw','maserati','lamborghini','corvette','yacht'];const galNames=['Technical diagram','T-shirt on model','T-shirt on model','Poster on wall'];const gal=id=>[images[id],`images/${slugs[id]}-shirt-male.webp`,`images/${slugs[id]}-shirt-female.webp`,`images/${slugs[id]}-poster-wall.webp`];function swapPhoto(id,src,btn){var m=document.getElementById('main-'+id);if(m)m.src=src;var ts=btn.parentNode.querySelectorAll('.thumb');for(var k=0;k<ts.length;k++)ts[k].classList.remove('active');btn.classList.add('active');}function openLightbox(src){document.getElementById('lightbox-img').src=src;document.getElementById('lightbox').classList.add('visible');document.body.style.overflow='hidden';}function closeLightbox(){document.getElementById('lightbox').classList.remove('visible');document.body.style.overflow='';}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});
+let cart=[];try{cart=JSON.parse(localStorage.getItem('evvs-cart')||'[]');if(!Array.isArray(cart))cart=[]}catch(e){cart=[]}
+const money=n=>'$'+(n/100).toFixed(2);const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+document.getElementById('grid').innerHTML=names.map((name,id)=>`<article class="product"><div class="photo"><img class="mainphoto" style="cursor:zoom-in" title="Click to enlarge" onclick="openLightbox(this.src)" id="main-${id}" src="${images[id]}" loading="lazy" alt="Complete labeled exploded-view technical diagram of ${safe(name)}"><div class="thumbs">${gal(id).map((s,k)=>`<button type="button" class="thumb${k===0?' active':''}" title="${galNames[k]}" aria-label="${galNames[k]}" onclick="swapPhoto(${id},'${s}',this)"><img src="${s}" loading="lazy" alt="${galNames[k]} - ${safe(name)}"></button>`).join('')}</div></div><div class="content"><h3>${safe(name)}</h3><div class="options"><div class="option"><div class="option-title">T-Shirt</div><div class="price">$29.99</div><div class="detail">Diagram print · S to XL</div><label for="size-${id}" style="font-size:11px;font-weight:700">Size</label><select id="size-${id}" aria-label="Shirt size for ${safe(name)}"><option>S</option><option>M</option><option>L</option><option>XL</option></select><button class="add" onclick="add(${id},'shirt')">Add T-Shirt</button></div><div class="option"><div class="option-title">8×10 Poster</div><div class="price">$19.99</div><div class="detail">Unframed matte print</div><div class="spacer"></div><button class="add" onclick="add(${id},'poster')">Add Poster</button></div></div></div></article>`).join('');
+function save(){localStorage.setItem('evvs-cart',JSON.stringify(cart));renderCart()}
+function add(id,type){let size=type==='shirt'?document.getElementById('size-'+id).value:null;let existing=cart.find(x=>x.id===id&&x.type===type&&x.size===size);if(existing)existing.quantity=Math.min(existing.quantity+1,20);else cart.push({id,type,size,quantity:1});save();flash('Added to cart');}
+function remove(i){cart.splice(i,1);save()}
+function renderCart(){document.getElementById('count').textContent=`(${cart.reduce((n,x)=>n+x.quantity,0)})`;document.getElementById('cartitems').innerHTML=cart.length?cart.map((x,i)=>`<div class="cartline"><img src="${images[x.id]}" alt=""><div><strong>${safe(names[x.id])}</strong><small>${x.type==='shirt'?'T-Shirt · Size '+safe(x.size):'8×10 Matte Poster'} · Qty ${x.quantity}</small><strong>${money((x.type==='shirt'?2999:1999)*x.quantity)}</strong><div><button onclick="remove(${i})">Remove</button></div></div></div>`).join(''):'Your cart is empty. Select a design to get started.';document.getElementById('subtotal').textContent=money(cart.reduce((n,x)=>n+(x.type==='shirt'?2999:1999)*x.quantity,0));document.getElementById('checkout').disabled=!cart.length}
+function openCart(){document.getElementById('drawer').classList.add('visible');document.getElementById('shade').classList.add('visible')}
+function closeCart(){document.getElementById('drawer').classList.remove('visible');document.getElementById('shade').classList.remove('visible')}
+function flash(t){let el=document.getElementById('toast');el.textContent=t;el.classList.add('visible');clearTimeout(window._toastTimer);window._toastTimer=setTimeout(()=>el.classList.remove('visible'),2200)}
+async function checkout(){const btn=document.getElementById('checkout'),msg=document.getElementById('cartmsg');btn.disabled=true;btn.textContent='Opening secure checkout…';msg.style.display='none';try{const res=await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:cart})});let body=await res.json();if(!res.ok)throw new Error(body.error||'Checkout unavailable');if(!body.url||!body.url.startsWith('https://checkout.stripe.com/'))throw new Error('Unable to open secure checkout.');window.location.href=body.url}catch(err){msg.textContent=err.message+' Payment has not been taken.';msg.style.display='block';btn.disabled=false;btn.textContent='Secure checkout'}}
+const params=new URLSearchParams(location.search);if(params.get('checkout')==='success'){cart=[];save();flash('Payment completed. Thank you!')}if(params.get('checkout')==='cancelled')flash('Checkout cancelled. Your cart is saved.');document.getElementById('year').textContent=new Date().getFullYear();renderCart();
+</script>
+</body></html>
