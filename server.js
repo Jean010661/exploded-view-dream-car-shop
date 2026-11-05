@@ -91,17 +91,43 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
         `Customer: ${c.name || ''} <${c.email || ''}>  Phone: ${c.phone || ''}\n` +
         `Ship to: ${(c.address && [c.address.line1, c.address.line2, c.address.city, c.address.state, c.address.postal_code].filter(Boolean).join(', ')) || ''}\n` +
         `Stripe session: ${session.id}\n`;
-      const transport = mailer();
-      if (transport) {
-        await transport.sendMail({
-          from: process.env.SMTP_USER,
-          to: 'jeanv@unitedaigroup.com',
-          subject: `New t-shirt shop order — $${(full.amount_total / 100).toFixed(2)}`,
-          text: body,
+      if (process.env.RESEND_API_KEY) {
+        // Resend HTTPS API (works on hosts that block outbound SMTP, e.g. Render free tier)
+        const resp = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            Authorization: 'Bearer ' + process.env.RESEND_API_KEY,
+            'Content-Type': 'application/json',
+            'User-Agent': 'exploded-view-shop/1.0',
+          },
+          body: JSON.stringify({
+            from: 'onboarding@resend.dev',
+            to: 'jvitalbc@gmail.com',
+            subject: `New t-shirt shop order — $${(full.amount_total / 100).toFixed(2)}`,
+            text: body,
+          }),
         });
-        console.log('Order email sent to jeanv@unitedaigroup.com for session', session.id);
+        const respText = await resp.text();
+        if (!resp.ok) {
+          throw new Error('Resend email failed: ' + resp.status + ' ' + respText);
+        }
+        let resendId = '';
+        try { resendId = JSON.parse(respText).id; } catch (e) { /* ignore */ }
+        console.log('Order email sent to jvitalbc@gmail.com for session', session.id, resendId);
       } else {
-        console.log('SMTP not configured — order would have been emailed:\n' + body);
+        // Fallback for local use: Gmail SMTP via nodemailer
+        const transport = mailer();
+        if (transport) {
+          await transport.sendMail({
+            from: process.env.SMTP_USER,
+            to: 'jeanv@unitedaigroup.com',
+            subject: `New t-shirt shop order — $${(full.amount_total / 100).toFixed(2)}`,
+            text: body,
+          });
+          console.log('Order email sent to jeanv@unitedaigroup.com for session', session.id);
+        } else {
+          console.log('SMTP not configured — order would have been emailed:\n' + body);
+        }
       }
     } catch (err) {
       console.error('Order webhook processing failed:', err.message);
