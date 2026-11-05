@@ -45,7 +45,8 @@ const products = [
   'Maserati GranTurismo Exploded',
   'Lamborghini Temerario Exploded',
   'Corvette Stingray Exploded',
-  'Luxury Yacht Exploded'
+  'Luxury Yacht Exploded',
+  'Lexus Exploded'
 ];
 const sizes = new Set(['S','M','L','XL']);
 
